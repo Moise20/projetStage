@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class pageDeGardeAdministrateurController extends Controller
+class pageDeGardeClientController extends Controller
 {
     public function affichage()
     {
-        return view('pageDegardeAdmin');
+        return view('pageDegardeClient');
     }
 }

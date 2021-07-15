@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class connexionAdministrateurController extends Controller
+class connexionCompagnieController extends Controller
 {
     public function formulaire()
     {
-        return view('connexionAdministrateur');
+        return view('connexionCompagnie');
     }
 
     public function traitement()
@@ -28,13 +28,14 @@ class connexionAdministrateurController extends Controller
         if ($resultat) {
             flash("Vous êtes connecté.")->success();
 
-            return redirect('/page-de-garde');
+            return redirect('/page-de-gardeCompagnie');
         } else {
             return back()->withInput()->withErrors([
                 'email' => 'Vos identifiants sont incorrects.',
             ]);
+            
+            return redirect('/connexionCompagnie');
             flash('identifiants incorrects')->error();
-            return redirect('/connexionAdministrateur');
         }
     }
 }
