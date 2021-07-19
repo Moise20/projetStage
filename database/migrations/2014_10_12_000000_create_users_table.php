@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
             $table->string('num_tel')->unique()->nullable();
             $table->string('localisation')->nullable();
             $table->string('photo')->nullable();
-            $table->string('chef_compagnie')->nullable();
             $table->timestamps();
         });
     }

@@ -18,6 +18,9 @@ use App\Http\Controllers\PasswordClientController;
 use App\Http\Controllers\compteAdminController;
 use App\Http\Controllers\compteCompagnieController;
 use App\Http\Controllers\compteClientController;
+use App\Http\Controllers\agenceController;
+use App\Http\Controllers\trajetController;
+use App\Http\Controllers\busController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +105,49 @@ Route::get('resetpasswordCompagnie{token}',[
     'uses'=>'App\Http\Controllers\PasswordCompagnieController@showPasswordResetForm']);
     
 Route::post('reset-passwordCompagnie', [PasswordCompagnieController::class,'resetPassword']);
+
+//route pour completer le profil d'une compagnie
+Route::get('/completerProfilCompagnie',[compteCompagnieController::class,'formulaireProfil']);
+Route::post('/completerProfilCompagnie',[compteCompagnieController::class,'traitementProfil']);
+//route pour voir les informations du compte d'une compagnie
+Route::get('/voirInformationsCompagnie',[compteCompagnieController::class,'traitementInformation']);
+
+//Route pour modifier les informations d'une compagnie
+Route::get('/modifierInformationsCompagnie{id}',[
+    'as'=>'modifierInformationsCompagnie.show',
+    'uses'=>'App\Http\Controllers\compteCompagnieController@modifInfoCompagnieFormulaire'
+]);
+Route::post('/modifierInformationsCompagnie',[compteCompagnieController::class,'modifInfoCompagnieTraitement']);
+
+//route pour ajouter une nouvelle agence
+Route::get('/ajouterAgence',[agenceController::class,'formulaire']);
+Route::post('/ajouterAgence',[agenceController::class,'traitement']);
+Route::get('/listeAgence',[agenceController::class,'liste']);
+Route::get('/modifierAgence{id}',[
+    'as'=>'modifierAgence.show',
+    'uses'=>'App\Http\Controllers\agenceController@formulaireModif'
+]);
+Route::post('/modifierAgence',[agenceController::class,'traitementModif']);
+
+//route pour ajouter un trajet de voyage
+Route::get('/ajouterTrajet',[trajetController::class,'formulaire']);
+Route::post('/ajouterTrajet',[trajetController::class,'traitement']);
+Route::get('/listeTrajet',[trajetController::class,'listeTrajet']);
+Route::get('/modifierTrajet{id}',[
+    'as'=>'modifierTrajet.show',
+    'uses'=>'App\Http\Controllers\trajetController@formulaireModif'
+]);
+Route::post('/modifierTrajet',[trajetController::class,'traitementModif']);
+//route pour ajouter un bus
+Route::get('/ajouterBus',[busController::class,'formulaire']);
+Route::post('/ajouterBus',[busController::class,'traitement']);
+Route::get('/listeBus',[busController::class,'listeBus']);
+Route::get('/modifierBus{id}',[
+    'as'=>'modifierBus.show',
+    'uses'=>'App\Http\Controllers\busController@formulaireModif'
+]);
+Route::post('/modifierBus',[busController::class,'traitementModif']);
+
 
 /*--------------------------------------------------------------------------------------*/
 

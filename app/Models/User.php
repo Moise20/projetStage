@@ -16,9 +16,13 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['id','nom','prenom','email','password','role','date_naissance','num_tel','localisation','photo','chef_compagnie'];
+    protected $fillable = ['id','nom','prenom','email','password','role','date_naissance','num_tel','localisation','photo'];
 
     
+    public function agence()
+    {
+        return $this->hasMany(Agence::class);
+    }
 
     /**
      * The attributes that should be hidden for arrays.
