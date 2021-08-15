@@ -10,7 +10,7 @@
                 </div>
 
                 <input id="id" name="id" type="hidden" value="{{$id}}">
-                
+
                 <div class="form-group row">
                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Immatriculation</label>
                     <div class="col-sm-9">
@@ -20,10 +20,15 @@
                             </div>
                             <input type="text" class="form-control" name="immatriculation" placeholder="Immatriculation Ici" value="{{ $immatriculation }}" required>
                         </div>
+                        <div>
+                            @if($errors->has('immatriculation'))
+                            <p class="alert-danger">
+                                <font>{{ $errors->first('immatriculation') }}</font>
+                            </p>
+                            @endif
+                        </div>
                     </div>
-                    @if($errors->has('immatriculation'))
-                    <p class="help is-danger">{{ $errors->first('immatriculation') }}</p>
-                    @endif
+
                 </div>
 
                 <div class="form-group row">
@@ -33,18 +38,23 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-pencil"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="nbrePlace" placeholder="nombre de place du Bus Ici" value="{{ $nbrePlace }}"  required>
+                            <input type="text" class="form-control" name="nbrePlace" placeholder="nombre de place du Bus Ici" value="{{ $nbrePlace }}" required>
+                        </div>
+                        <div>
+                            @if($errors->has('nbrePlace'))
+                            <p class="alert-danger">
+                                <font color="black"></font>{{ $errors->first('nbrePlace') }}
+                            </p>
+                            @endif
                         </div>
                     </div>
-                    @if($errors->has('nbrePlace'))
-                    <p class="help is-danger">{{ $errors->first('nbrePlace') }}</p>
-                    @endif
+
                 </div>
-                
-    <div class="border-top">
-        <div class="card-body">
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-        </div>
-    </div>
+
+                <div class="border-top">
+                    <div class="card-body">
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </div>
+                </div>
 </form>
 @endsection

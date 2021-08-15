@@ -20,10 +20,15 @@
                             </div>
                             <input type="text" class="form-control" name="nom" placeholder="Nom Ici" value="{{ $nom }}" required>
                         </div>
+                        <div>
+                            @if($errors->has('nom'))
+                            <p class="alert-danger">
+                                <font>{{ $errors->first('nom') }}</font>
+                            </p>
+                            @endif
+                        </div>
                     </div>
-                    @if($errors->has('nom'))
-                    <p class="help is-danger">{{ $errors->first('nom') }}</p>
-                    @endif
+
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 text-right control-label col-form-label">VilleDepart</label>
@@ -37,7 +42,7 @@
                                 <optgroup label="">
                                     <option value="Lome">Lome</option>
                                     <option value="Kara">Kara</option>
-                                    
+
 
                                 </optgroup>
                             </select>
@@ -58,7 +63,7 @@
                                 <optgroup label="">
                                     <option value="Lome">Lome</option>
                                     <option value="Kara">Kara</option>
-                                    
+
 
                                 </optgroup>
                             </select>
@@ -66,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="form-group row">
                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">HeureDepart</label>
                     <div class="col-sm-9">
@@ -74,12 +79,17 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-pencil"></i></span>
                             </div>
-                            <input type="time" class="form-control" name="heureDepart" placeholder="Heure Ici" value="{{ $heureDepart}}"  required>
+                            <input type="time" class="form-control" name="heureDepart" placeholder="Heure Ici" value="{{ $heureDepart}}" required>
+                        </div>
+                        <div>
+                            @if($errors->has('heureDepart'))
+                            <p class="alert-danger">
+                                <font>{{ $errors->first('heureDepart') }}</font>
+                            </p>
+                            @endif
                         </div>
                     </div>
-                    @if($errors->has('heureDepart'))
-                    <p class="help is-danger">{{ $errors->first('heureDepart') }}</p>
-                    @endif
+
                 </div>
 
                 <div class="form-group row">
@@ -89,12 +99,17 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-pencil"></i></span>
                             </div>
-                            <input type="time" class="form-control" name="heureArrivee" placeholder="Heure Ici" value="{{ $heureArrivee}}"  required>
+                            <input type="time" class="form-control" name="heureArrivee" placeholder="Heure Ici" value="{{ $heureArrivee}}" required>
+                        </div>
+                        <div>
+                            @if($errors->has('heureArrivee'))
+                            <p class="alert-danger">
+                                <font>{{ $errors->first('heureArrivee') }}</font>
+                            </p>
+                            @endif
                         </div>
                     </div>
-                    @if($errors->has('heureArrivee'))
-                    <p class="help is-danger">{{ $errors->first('heureArrivee') }}</p>
-                    @endif
+
                 </div>
 
                 <div class="form-group row">
@@ -104,12 +119,17 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-pencil"></i></span>
                             </div>
-                            <input type="date"  class="form-control" name="dateDepart" placeholder="Date De Depart Ici" value="{{ $dateDepart }}" required>
+                            <input type="date" class="form-control" name="dateDepart" placeholder="Date De Depart Ici" value="{{ $dateDepart }}" required>
+                        </div>
+                        <div>
+                            @if($errors->has('dateDepart'))
+                            <p class="alert-danger">
+                                <font color="black">{{ $errors->first('dateDepart') }}</font>
+                            </p>
+                            @endif
                         </div>
                     </div>
-                    @if($errors->has('dateDepart'))
-                    <p class="help is-danger">{{ $errors->first('dateDepart') }}</p>
-                    @endif
+
                 </div>
                 <div class="form-group row">
                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Tarif</label>
@@ -120,33 +140,37 @@
                             </div>
                             <input type="text" class="form-control" name="tarif" placeholder="tarif Ici" value="{{ $tarif }}" required>
                         </div>
+                        <div>
+                            @if($errors->has('tarif'))
+                            <p class="alert-danger">
+                                <font color="black">{{ $errors->first('tarif') }}</font>
+                            </p>
+                            @endif
+                        </div>
                     </div>
-                    @if($errors->has('tarif'))
-                    <p class="help is-danger">{{ $errors->first('tarif') }}</p>
-                    @endif
+
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-3 text-right control-label col-form-label">Nombre Bus</label>
-                    <div class="col-md-9">
+                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Nombre de place</label>
+                    <div class="col-sm-9">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text bg-success text-white" id="basic-addon2"><i class="mdi-selection"></i></span>
+                                <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-pencil"></i></span>
                             </div>
-                            <select name="nbr_bus" class="select2 form-control custom-select" required>
-                                <option></option>
-                                <optgroup label="">
-                                    <option value="1">1 Bus</option>
-                                    <option value="2">2 Bus</option>
-                                    <option value="3">3 Bus</option>
-
-                                </optgroup>
-                            </select>
-
+                            <input type="number" min="1" class="form-control" name="nbrPlace" placeholder="Nombre de place Ici" value="{{ $nbrPlace }}" required>
+                        </div>
+                        <div>
+                            @if($errors->has('nbrPlace'))
+                            <p class="alert-danger">
+                                <font color="black">{{ $errors->first('nbrPlace') }}</font>
+                            </p>
+                            @endif
                         </div>
                     </div>
+
                 </div>
-                
+
 
                 <div class="form-group row">
                     <label class="col-sm-3 text-right control-label col-form-label">Agence</label>

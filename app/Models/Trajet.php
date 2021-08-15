@@ -12,11 +12,16 @@ class Trajet extends Model implements Authenticatable
 {
 
     use BasicAuthenticatable;
-    protected $fillable = ['nom','villeDepart','villeArrivee','heureDepart','heureArrivee','dateDepart','tarif','nbr_bus','agence_id'];
+    protected $fillable = ['nom','villeDepart','villeArrivee','heureDepart','heureArrivee','dateDepart','tarif','nbrPlace','agence_id'];
 
     public function agence()
     {
         return $this->belongsTo(Agence::class);
+    }
+
+    public function reservation()
+    {
+        return $this->hasMany(Reservation::class);
     }
 
 }

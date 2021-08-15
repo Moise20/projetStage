@@ -18,10 +18,15 @@
                             </div>
                             <input type="text" class="form-control" name="localisation" placeholder="Adresse Ici" value="{{ old('localisation') }}" required>
                         </div>
+                        <div>
+                            @if($errors->has('localisation'))
+                            <p class="alert-danger">
+                                <font color="black">{{ $errors->first('localisation') }}</font>
+                            </p>
+                            @endif
+                        </div>
                     </div>
-                    @if($errors->has('localisation'))
-                    <p class="help is-danger">{{ $errors->first('localisation') }}</p>
-                    @endif
+
                 </div>
 
                 <div class="form-group row">
@@ -33,15 +38,20 @@
                             </div>
                             <input type="file" class="form-control" name="photo" placeholder="Photo Ici" value="{{ old('photo') }}" required>
                         </div>
+                        <div>
+                            @if($errors->has('photo'))
+                            <p class="alert-danger">
+                                <font color="black">{{ $errors->first('photo') }}</font>
+                            </p>
+                            @endif
+                        </div>
                     </div>
-                    @if($errors->has('photo'))
-                    <p class="help is-danger">{{ $errors->first('photo') }}</p>
-                    @endif
+
                 </div>
 
-                
 
-                
+
+
             </div>
         </div>
     </div>

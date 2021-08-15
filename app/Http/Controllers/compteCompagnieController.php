@@ -58,7 +58,7 @@ class compteCompagnieController extends Controller
 
         $user = auth()->user();
         $user->localisation = request('localisation');
-        $user->photo=request($path);
+        $user->photo=($path);
         $user->save();
         flash("Votre profil a bien été mis à jour.")->success();
         return redirect('/page-de-gardeCompagnie');
@@ -91,7 +91,7 @@ class compteCompagnieController extends Controller
 
         request()->validate([
             'id' => ['required'],
-            'nom'=>['required'],
+            'nom'=>['required','alpha'],
             'email'=>['required','regex:/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4}$/'],
             'localisation'=>['required'],
             'photo'=>['required','image'],

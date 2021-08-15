@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class compteAdminController extends Controller
@@ -35,5 +36,55 @@ class compteAdminController extends Controller
         $employe->save();
         flash("Votre mot de passe a bien été mis à jour.")->success();
         return redirect('/page-de-garde');
+    }
+
+    public function traitementInformation()
+    {
+        $user = auth()->user();
+        $id= $user->id;
+        $admin=User::where('id',$id)->first();
+
+        return view('voirInfoAdmin',[
+            'admin'=>$admin,
+        ]);
+    }
+
+    public function modifInfoAdminFormulaire($id)
+    {
+        $admin = User::findOrFail($id);
+        return view('modifInfoAdmin',[
+            'id'=>$admin->id,
+            'nom'=>$admin->nom,
+            'prenom'=>$admin->prenom,
+            'email'=>$admin->email,
+            
+        ]);
+    }
+
+    public function modifInfoAdminTraitement(Request $request, User $compagnie)
+    {
+
+        request()->validate([
+            'id' => ['required'],
+            'nom'=>['required','alpha'],
+            'prenom'=>['required','alpha'],
+            'email'=>['required','email','regex:/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4}$/'],
+            
+        ]);
+
+        
+
+        $id = ($request->input('id'));
+        $admin = User::where('id', $id)->update([
+
+            'nom' => ($request->input('nom')),
+            'prenom' => ($request->input('prenom')),
+            'email' => ($request->input('email')),
+            
+        ]);
+
+        flash("Les informations ont bien été mise à jour.")->success();
+        return redirect('/page-de-garde');
+
     }
 }

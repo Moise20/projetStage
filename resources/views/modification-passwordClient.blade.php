@@ -17,10 +17,15 @@
                     </div>
                     <input type="password" class="form-control" name="password" id="fname" placeholder="Password Ici" value="{{ old('password') }}" required>
                 </div>
+                <div>
+                    @if($errors->has('password'))
+                    <p class="alert-danger">
+                        <font color="black">{{ $errors->first('password') }}</font>
+                    </p>
+                    @endif
+                </div>
             </div>
-            @if($errors->has('password'))
-            <p class="help is-danger">{{ $errors->first('password') }}</p>
-            @endif
+
         </div>
 
         <div class="form-group row">
@@ -32,10 +37,15 @@
                     </div>
                     <input type="password" class="form-control" name="password_confirmation" id="fname" placeholder="Confirmation Password Ici" value="{{ old('password_confirmation') }}" required>
                 </div>
+                <div>
+                    @if($errors->has('password_confirmation'))
+                    <p class="alert-danger">
+                        <font color="black">{{ $errors->first('password_confirmation') }}</font>
+                    </p>
+                    @endif
+                </div>
             </div>
-            @if($errors->has('password_confirmation'))
-            <p class="help is-danger">{{ $errors->first('password_confirmation') }}</p>
-            @endif
+
         </div>
     </div>
     <div class="border-top">

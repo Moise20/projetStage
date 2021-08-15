@@ -19,6 +19,7 @@
                     <th scope="col"><strong>Ville</strong></th>
                     <th scope="col"><strong>Tel</strong></th>
                     <th scope="col"><strong>Adresse</strong></th>
+                    <th scope="col"><strong>Compagnie</strong></th>
                     <th scope="col"><strong>Action</strong></th>
                 </tr>
             </thead>
@@ -37,7 +38,7 @@
                     <td>{{$agence->tel}}</td>
                     <td>{{$agence->adresse}}</td>
                     
-                   
+                    <td>{{$agence->compagnieN}}</td>
                     <td>
                         <a href="{{route('modifierAgence.show', [$agence->id]) }}">
                             <div class="field">

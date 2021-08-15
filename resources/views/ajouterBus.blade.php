@@ -18,10 +18,13 @@
                             </div>
                             <input type="text" class="form-control" name="immatriculation" placeholder="Immatriculation Ici" value="{{ old('immatriculation') }}" required>
                         </div>
+                        <div>
+                            @if($errors->has('immatriculation'))
+                            <p class="alert-danger"><font color="black">{{ $errors->first('immatriculation') }}</font></p>
+                            @endif
+                        </div>
                     </div>
-                    @if($errors->has('immatriculation'))
-                    <p class="help is-danger">{{ $errors->first('immatriculation') }}</p>
-                    @endif
+
                 </div>
 
                 <div class="form-group row">
@@ -31,18 +34,20 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-pencil"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="nbrePlace" placeholder="nombre de place du Bus Ici" value="{{ old('nbrePlace') }}"  required>
+                            <input type="text" class="form-control" name="nbrePlace" placeholder="nombre de place du Bus Ici" value="{{ old('nbrePlace') }}" required>
                         </div>
                     </div>
+                    <div>
                     @if($errors->has('nbrePlace'))
-                    <p class="help is-danger">{{ $errors->first('nbrePlace') }}</p>
+                    <p class="alert-danger"><font color="black">{{ $errors->first('nbrePlace') }}</font></p>
                     @endif
+                    </div>
                 </div>
-                
-    <div class="border-top">
-        <div class="card-body">
-            <button type="submit" class="btn btn-primary">Envoyer</button>
-        </div>
-    </div>
+
+                <div class="border-top">
+                    <div class="card-body">
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </div>
+                </div>
 </form>
 @endsection

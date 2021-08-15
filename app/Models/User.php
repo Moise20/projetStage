@@ -24,6 +24,16 @@ class User extends Authenticatable
         return $this->hasMany(Agence::class);
     }
 
+    public function reservaton()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function colis()
+    {
+        return $this->hasMany(Colis::class);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

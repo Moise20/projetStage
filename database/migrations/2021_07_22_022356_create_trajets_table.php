@@ -22,7 +22,7 @@ class CreateTrajetsTable extends Migration
             $table->string('heureArrivee');
             $table->string('dateDepart');
             $table->string('tarif');
-            $table->integer('nbr_bus');
+            $table->integer('nbrPlace');
             $table->integer('agence_id');
             $table->timestamps();
         });

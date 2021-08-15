@@ -11,7 +11,14 @@
         <div class="input-group-prepend">
             <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="ti-email"></i></span>
         </div>
-        <input type="text" class="form-control form-control-lg" name="email" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
+        <input type="text" class="form-control form-control-lg" name="email" value="{{ old('email') }}" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div>
+        @if($errors->has('email'))
+        <p class="alert-danger">
+            <font>{{ $errors->first('email') }}</font>
+        </p>
+        @endif
     </div>
     <!-- pwd -->
 

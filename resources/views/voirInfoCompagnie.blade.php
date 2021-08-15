@@ -38,7 +38,7 @@
                     <td>{{$compagnie->localisation}}</td>
                   
                     <td>
-                        <img  src="/public/storage/photos/3x3eO4lWWg75aLQLB7JLJGPHfeHT6IS0POk2ABNe.jpg" alt="Photo">
+                        <img  src="/storage/{{$compagnie->photo}}" alt="Photo">
                     </td>
                     <td>
                         <a href="{{route('modifierInformationsCompagnie.show', [$compagnie->id]) }}">

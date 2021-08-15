@@ -167,7 +167,6 @@
                         <li class="sidebar-item"><a href="/completerProfilCompagnie" class="sidebar-link"><i class="mdi mdi-account-circle"></i><span class="hide-menu"> Completer Profil </span></a></li>
                         <li class="sidebar-item"><a href="/ajouterAgence" class="sidebar-link"><i class="mdi mdi-border-outside"></i><span class="hide-menu"> Agences </span></a></li>
                         <li class="sidebar-item"><a href="/ajouterTrajet" class="sidebar-link"><i class="mdi mdi-table-large"></i><span class="hide-menu"> Trajet </span></a></li>
-                        <li class="sidebar-item"><a href="/ajouterBus" class="sidebar-link"><i class="mdi mdi-car"></i><span class="hide-menu"> Bus </span></a></li>
                         
 
                     </ul>
@@ -189,7 +188,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Compagnie {{auth()->user()->nom}}</h4>
+                        <h4 class="page-title">Page de Bord {{auth()->user()->nom}}</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
 
@@ -237,77 +236,37 @@
                                             </div>
                                             <div class="col-lg-3">
                                                 <div class="row">
-                                                    <div class="col-6">
+                                                    
+                                                    <div class="col-6 m-t-15">
                                                         <div class="bg-dark p-10 text-white text-center">
-                                                            <i class="fa fa-user m-b-5 font-16"></i>
-                                                            <h5 class="m-b-0 m-t-5"></h5>
-                                                            <small class="font-light"></small>
+                                                            <i class="fa fa-table m-b-5 font-16"></i>
+                                                            <h5 class="m-b-0 m-t-5">{{$nom}}</h5>
+                                                            <small class="font-light">Compagnie</small>
                                                         </div>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-6 m-t-15">
                                                         <div class="bg-dark p-10 text-white text-center">
-                                                            <i class="fa fa-user m-b-5 font-16"></i>
-                                                            <h5 class="m-b-0 m-t-5"></h5>
-                                                            <small class="font-light"></small>
+                                                            <i class="fa fa-table m-b-5 font-16"></i>
+                                                            <h5 class="m-b-0 m-t-5">{{$agences}}</h5>
+                                                            <small class="font-light">Agences</small>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 m-t-15">
                                                         <div class="bg-dark p-10 text-white text-center">
                                                             <i class="fa fa-table m-b-5 font-16"></i>
                                                             <h5 class="m-b-0 m-t-5"></h5>
-                                                            <small class="font-light"></small>
+                                                            <small class="font-light">Trajet</small>
                                                         </div>
                                                     </div>
                                                     <div class="col-6 m-t-15">
                                                         <div class="bg-dark p-10 text-white text-center">
                                                             <i class="fa fa-table m-b-5 font-16"></i>
                                                             <h5 class="m-b-0 m-t-5"></h5>
-                                                            <small class="font-light"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6 m-t-15">
-                                                        <div class="bg-dark p-10 text-white text-center">
-                                                            <i class="fa fa-table m-b-5 font-16"></i>
-                                                            <h5 class="m-b-0 m-t-5"></h5>
-                                                            <small class="font-light"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6 m-t-15">
-                                                        <div class="bg-dark p-10 text-white text-center">
-                                                            <i class="fa fa-table m-b-5 font-16"></i>
-                                                            <h5 class="m-b-0 m-t-5"></h5>
-                                                            <small class="font-light"></small>
+                                                            <small class="font-light">Reservations</small>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-6 m-t-15">
-                                                        <div class="bg-dark p-10 text-white text-center">
-                                                            <i class="fa fa-table m-b-5 font-16"></i>
-                                                            <h5 class="m-b-0 m-t-5"></h5>
-                                                            <small class="font-light"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6 m-t-15">
-                                                        <div class="bg-dark p-10 text-white text-center">
-                                                            <i class="fa fa-table m-b-5 font-16"></i>
-                                                            <h5 class="m-b-0 m-t-5"></h5>
-                                                            <small class="font-light"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6 m-t-15">
-                                                        <div class="bg-dark p-10 text-white text-center">
-                                                            <i class="fa fa-table m-b-5 font-16"></i>
-                                                            <h5 class="m-b-0 m-t-5"></h5>
-                                                            <small class="font-light"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6 m-t-15">
-                                                        <div class="bg-dark p-10 text-white text-center">
-                                                            <i class="fa fa-table m-b-5 font-16"></i>
-                                                            <h5 class="m-b-0 m-t-5"></h5>
-                                                            <small class="font-light"></small>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                             <!-- column -->

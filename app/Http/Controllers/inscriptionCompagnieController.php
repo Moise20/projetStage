@@ -15,7 +15,7 @@ class inscriptionCompagnieController extends Controller
     public function traitement()
     {
         request()->validate([
-            'nom' => ['required'],
+            'nom' => ['required','alpha'],
             'email' => ['required', 'email', 'regex:/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4}$/'],
             'password' => ['required', 'confirmed', 'min:8'],
             'password_confirmation' => ['required'],
@@ -35,6 +35,6 @@ class inscriptionCompagnieController extends Controller
 
 
         flash('Inscription reuissi')->success();
-        return redirect('/inscriptionCompagnie');
+        return redirect('/connexionCompagnie');
     }
 }

@@ -20,10 +20,15 @@
                             </div>
                             <input type="text" class="form-control" name="nom" placeholder="Nom Ici" value="{{ $nom}}" required>
                         </div>
+                        <div>
+                            @if($errors->has('nom'))
+                            <p class="alert-danger">
+                                <font color="black">{{ $errors->first('nom') }}</font>
+                            </p>
+                            @endif
+                        </div>
                     </div>
-                    @if($errors->has('nom'))
-                    <p class="help is-danger">{{ $errors->first('nom') }}</p>
-                    @endif
+
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-3 text-right control-label col-form-label">Ville</label>
@@ -37,7 +42,7 @@
                                 <optgroup label="">
                                     <option value="Lome">Lome</option>
                                     <option value="Kara">Kara</option>
-                                    
+
 
                                 </optgroup>
                             </select>
@@ -45,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="form-group row">
                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Tel</label>
                     <div class="col-sm-9">
@@ -55,10 +60,15 @@
                             </div>
                             <input type="tel" class="form-control" name="tel" placeholder="Tel Ici" value="{{ $tel }}" pattern="[0-9]{8}" required>
                         </div>
+                        <div>
+                            @if($errors->has('tel'))
+                            <p class="alert-danger">
+                                <font color="black">{{ $errors->first('tel') }}</font>
+                            </p>
+                            @endif
+                        </div>
                     </div>
-                    @if($errors->has('tel'))
-                    <p class="help is-danger">{{ $errors->first('tel') }}</p>
-                    @endif
+
                 </div>
                 <div class="form-group row">
                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Adresse</label>
@@ -69,31 +79,19 @@
                             </div>
                             <input type="text" class="form-control" name="adresse" placeholder="Adresse Ici" value="{{ $adresse }}" required>
                         </div>
-                    </div>
-                    @if($errors->has('adresse'))
-                    <p class="help is-danger">{{ $errors->first('adresse') }}</p>
-                    @endif
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-3 text-right control-label col-form-label">Compagnie</label>
-                    <div class="col-md-9">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-success text-white" id="basic-addon2"><i class="mdi-selection"></i></span>
-                            </div>
-                            <select name="user_id" class="select2 form-control custom-select" required>
-                                <option></option>
-                                <optgroup label="">
-                                    @foreach($compagnies as $compagnie)
-                                    <option value="{{$compagnie->id}}">{{$compagnie->nom}}</option>
-                                    @endforeach
-                                </optgroup>
-                            </select>
-
+                        <div> @if($errors->has('adresse'))
+                            <p class="alert-danger">
+                                <font color="black">{{ $errors->first('adresse') }}</font>
+                            </p>
+                            @endif
                         </div>
                     </div>
+
                 </div>
+
+                <input id="user_id" name="user_id" type="hidden" value="{{$idC}}">
+
+
             </div>
         </div>
     </div>

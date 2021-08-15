@@ -11,13 +11,27 @@
                 </div>
                 <input type="text" class="form-control form-control-lg" name="nom" placeholder="Nom" aria-label="Username" aria-describedby="basic-addon1" required>
             </div>
-            
+            <div>
+                @if($errors->has('nom'))
+                <p class="alert-danger">
+                    <font color="black">{{ $errors->first('nom') }}</font>
+                </p>
+                @endif
+            </div>
+
             <!-- email -->
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="ti-email"></i></span>
                 </div>
-                <input type="text" class="form-control form-control-lg" name="email" placeholder="Addresse Email" aria-label="Username" aria-describedby="basic-addon1" required>
+                <input type="text" class="form-control form-control-lg" name="email" placeholder="Addresse Email" value="{{ old('email') }}" aria-label="Username" aria-describedby="basic-addon1" required>
+            </div>
+            <div>
+                @if($errors->has('email'))
+                <p class=" alert-danger">
+                    <font color="black">{{ $errors->first('email') }}</font>
+                </p>
+                @endif
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -25,16 +39,30 @@
                 </div>
                 <input type="text" class="form-control form-control-lg" name="password" placeholder="Mot De Passe" aria-label="Password" aria-describedby="basic-addon1" required>
             </div>
+            <div>
+                @if($errors->has('password'))
+                <p class="alert-danger">
+                    <font color="black">{{ $errors->first('password') }}</font>
+                </p>
+                @endif
+            </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text bg-info text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                 </div>
                 <input type="text" class="form-control form-control-lg" name="password_confirmation" placeholder=" Confirmer Mot De Passe " aria-label="Password" aria-describedby="basic-addon1" required>
             </div>
+            <div>
+                @if($errors->has('password_confirmation'))
+                <p class="alert-danger">
+                    <font color="black">{{ $errors->first('password_confirmation') }}</font>
+                </p>
+                @endif
+            </div>
 
             <input id="role" name="role" type="hidden" value="2">
 
-            
+
 
 
 

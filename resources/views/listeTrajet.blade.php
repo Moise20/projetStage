@@ -23,7 +23,7 @@
                     <th scope="col"><strong>HeureArrivee</strong></th>
                     <th scope="col"><strong>DateDepart</strong></th>
                     <th scope="col"><strong>tarif</strong></th>
-                    <th scope="col"><strong>Nombre de Bus</strong></th>
+                    <th scope="col"><strong>Nombre de Place</strong></th>
                     <th scope="col"><strong>Agence</strong></th>
                     <th scope="col"><strong>Action</strong></th>
                 </tr>
@@ -45,7 +45,7 @@
                     <td>{{$trajet->heureArrivee}}</td>
                     <td>{{$trajet->dateDepart}}</td>
                     <td>{{$trajet->tarif}}</td>
-                    <td>{{$trajet->nbr_bus}}</td>
+                    <td>{{$trajet->nbrPlace}}</td>
                     <td>{{$trajet->agenceNom}}</td>
                    
                     <td>

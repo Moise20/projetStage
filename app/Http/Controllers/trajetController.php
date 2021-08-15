@@ -12,7 +12,10 @@ class trajetController extends Controller
 
     public function formulaire()
     {
-        $agence = Agence::all();
+        $compagnie = auth()->user();
+        $idC = $compagnie->id;
+
+        $agence = Agence::where('user_id',$idC)->get();
         return view('ajouterTrajet', [
             'agences' => $agence,
         ]);
@@ -21,14 +24,14 @@ class trajetController extends Controller
     {
         request()->validate([
 
-            'nom' => ['required'],
+            'nom' => ['required','alpha'],
             'villeDepart' => ['required'],
             'villeArrivee' => ['required'],
             'heureDepart' => ['required'],
             'heureArrivee' => ['required'],
             'dateDepart' => ['required'],
-            'tarif' => ['required'],
-            'nbr_bus' => ['required'],
+            'tarif' => ['required','numeric','max:15000'],
+            'nbrPlace' => ['required'],
             'agence_id' => ['required'],
         ]);
 
@@ -40,7 +43,7 @@ class trajetController extends Controller
             'heureArrivee' => (request('heureArrivee')),
             'dateDepart' => (request('dateDepart')),
             'tarif' => (request('tarif')),
-            'nbr_bus' => (request('nbr_bus')),
+            'nbrPlace' => (request('nbrPlace')),
             'agence_id' => (request('agence_id')),
 
         ]);
@@ -51,10 +54,14 @@ class trajetController extends Controller
 
     public function listeTrajet()
     {
+        $compagnie = auth()->user();
+        $idC = $compagnie->id;
     
         $trajet = DB::table('trajets')
             ->join('agences', 'trajets.agence_id', '=', 'agences.id')
-            ->select('trajets.id', 'trajets.nom', 'trajets.villeDepart', 'trajets.villeArrivee', 'trajets.heureDepart', 'trajets.heureArrivee', 'trajets.dateDepart', 'trajets.tarif', 'trajets.nbr_bus', 'agences.nom as agenceNom')
+            ->join('users','agences.user_id','=','users.id')
+            ->select('trajets.id', 'trajets.nom', 'trajets.villeDepart', 'trajets.villeArrivee', 'trajets.heureDepart', 'trajets.heureArrivee', 'trajets.dateDepart', 'trajets.tarif', 'trajets.nbrPlace', 'agences.nom as agenceNom')
+            ->where('users.id',$idC)
             ->get();
 
             return view('listeTrajet',[
@@ -64,8 +71,12 @@ class trajetController extends Controller
 
     public function formulaireModif($id)
     {
+        $compagnie = auth()->user();
+        $idC = $compagnie->id;
 
-        $agence = Agence::all();
+        $agence = Agence::where('user_id',$idC)->get();
+
+        //$agence = Agence::all();
         $trajet = Trajet::findOrFail($id);
         return view('modifierTrajet',[
             'id'=>$trajet->id,
@@ -76,7 +87,7 @@ class trajetController extends Controller
             'heureArrivee'=>$trajet->heureArrivee,
             'dateDepart'=>$trajet->dateDepart,
             'tarif'=>$trajet->tarif,
-            'nbr_bus'=>$trajet->nbr_bus,
+            'nbrPlace'=>$trajet->nbrPlace,
             'agences'=>$agence,
         ]);
     }
@@ -87,14 +98,14 @@ class trajetController extends Controller
         request()->validate([
 
             'id'=>['required'],
-            'nom' => ['required'],
+            'nom' => ['required','alpha'],
             'villeDepart' => ['required'],
             'villeArrivee' => ['required'],
             'heureDepart' => ['required'],
             'heureArrivee' => ['required'],
-            'dateDepart' => ['required'],
-            'tarif' => ['required'],
-            'nbr_bus' => ['required'],
+            'dateDepart' => ['required','date'],
+            'tarif' => ['required','numeric','max:15000'],
+            'nbrPlace' => ['required'],
             'agence_id' => ['required'],
         ]);
 
@@ -108,7 +119,7 @@ class trajetController extends Controller
             'heureArrivee' => ($request->input('heureArrivee')),
             'dateDepart' => ($request->input('dateDepart')),
             'tarif' => ($request->input('tarif')),
-            'nbr_bus' => ($request->input('nbr_bus')),
+            'nbrPlace' => ($request->input('nbrPlace')),
             'agence_id' => ($request->input('agence_id')),
             
         ]);
