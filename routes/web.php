@@ -290,7 +290,7 @@ Route::post('reset-passwordClient', [PasswordClientController::class, 'resetPass
 
 Route::get('simple-qrcode',[SimpleQRcodeController::class,'generate']);
 
-Route::get('/carte', function(){
+/*Route::get('/carte', function(){
     $config = array();
     $config['center'] = 'auto';
     $config['onboundschanged'] = 'if (!centreGot) {
@@ -311,3 +311,4 @@ Route::get('/carte', function(){
     $map = app('map')->create_map();
     echo "<html><head><script>var centreGot = false;</script>".$map['js']."</head><body>".$map['html']."</body></html>";
 });
+*/
