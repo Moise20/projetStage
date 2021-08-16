@@ -254,7 +254,7 @@ class reserverBilletController extends Controller
         return view('confirmerPaiementTrajet');
     }
 
-    public function TraitementFinaliserPaiement()
+    /*public function TraitementFinaliserPaiement()
     {
         request()->validate([
             'identifier' => ['required', 'numeric'],
@@ -304,5 +304,5 @@ class reserverBilletController extends Controller
             flash("Votre Facture vous a ete envpye par mail et par sms.")->success();
             return redirect('/page-de-gardeClient');
         }
-    }
+    }*/
 }

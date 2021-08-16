@@ -136,7 +136,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/voirInformationsAdmin"><i class="ti-user m-r-5 m-l-5"></i>{{auth()->user()->nom}}</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/modification-passwordAdmin"><i class="ti-settings m-r-5 m-l-5"></i> Modifier Mot De Passe </a>
+                                <a class="dropdown-item" href="/page-de-garde"><i class="ti-settings m-r-5 m-l-5"></i> Page de Garde </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/deconnexionAdministrateur"><i class="fa fa-power-off m-r-5 m-l-5"></i> Deconnection </a>
 
@@ -187,7 +187,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Page de Bord</h4>
+                        <h4 class="page-title"></h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
 

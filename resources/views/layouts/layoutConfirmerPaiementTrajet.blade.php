@@ -128,7 +128,7 @@
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('template1/assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
                             <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/voirInformationsClient"><i class="ti-user m-r-5 m-l-5"></i>{{auth()->user()->nom}}</a>
+                                <a class="dropdown-item" href="/voirInformationsClient"><i class="ti-user m-r-5 m-l-5"></i></a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/page-de-gardeClient"><i class="ti-table m-r-5 m-l-5"></i> Page De Garde </a>
 
@@ -180,7 +180,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Client {{auth()->user()->nom}}</h4>
+                        <h4 class="page-title">Client </h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">

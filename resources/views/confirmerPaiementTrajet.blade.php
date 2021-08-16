@@ -1,6 +1,6 @@
 @extends('layouts.layoutConfirmerPaiementTrajet')
 @section('contenu')
-<form action="/finaliserPaiement" method="post" class="form-horizontal m-t-20" enctype="multipart/form-data">
+<form action="/traitementFinal" method="post" class="form-horizontal m-t-20" enctype="multipart/form-data">
     {{ csrf_field() }}
     <div class="row p-b-30">
         <div class="col-12">
@@ -9,7 +9,7 @@
                     <h4 class="card-title" align="center">Confirmation de Paiement</h4>
                 </div>
                 <div class="form-group row">
-                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Nombre de passager</label>
+                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Identifiant de paiement</label>
                     <div class="col-sm-9">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -26,21 +26,22 @@
                             </p>
                             @endif
                         </div>
+                        <div>
+                            <h6>Vous recevrez dans votre boite mail un code QR que vous devrez presenter le jour du voyage</h6>
+                        </div>
                     </div>
 
                 </div>
 
-                <div>
-                    <h6>Nous vous enverons la facture de votre reservation par mail et par sms</h6>
-                </div>
-                
+
+
+            </div>
         </div>
-    </div>
-    <div class="border-top">
-        <div class="card-body">
-            <button type="submit" class="btn btn-primary">Envoyer</button>
+        <div class="border-top">
+            <div class="card-body">
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </div>
         </div>
-    </div>
 </form>
 
 @endsection

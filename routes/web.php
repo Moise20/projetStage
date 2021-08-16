@@ -26,6 +26,7 @@ use App\Http\Controllers\envoyerColisController;
 use App\Http\Controllers\SimpleQRcodeController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\statistiqueController;
+use App\Http\Controllers\traitementPaiementFinalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -260,8 +261,9 @@ Route::group([
     Route::get('/regleReservation', [guideUtilisation::class, 'affichageRegleReservation']);
 });
 //Route::get('/finaliserPaiementTrajet',[reserverBilletController::class,'afficher']);
-Route::get('/finaliserPaiementTrajet', [reserverBilletController::class, 'confirmerPaiement']);
-Route::post('/finaliserPaiement', [reserverBilletController::class, 'TraitementFinaliserPaiement']);
+//Route::get('/finaliserPaiementTrajet', [reserverBilletController::class, 'confirmerPaiement']);
+//Route::post('/traitementFinal', [reserverBilletController::class, 'TraitementFinaliserPaiement']);
+Route::post('/traitementFinal',[traitementPaiementFinalController::class,'TraitementFinaliserPaiement']);
 
 
 
@@ -312,3 +314,4 @@ Route::get('simple-qrcode',[SimpleQRcodeController::class,'generate']);
     echo "<html><head><script>var centreGot = false;</script>".$map['js']."</head><body>".$map['html']."</body></html>";
 });
 */
+Route::get('/finaliserPaiementTrajet', [reserverBilletController::class, 'confirmerPaiement']);
