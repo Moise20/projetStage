@@ -12,6 +12,27 @@
 
                 <input id="id" name="id" type="hidden" value="{{$id}}">
 
+
+                <div class="form-group row">
+                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Tel</label>
+                    <div class="col-sm-9">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-pencil"></i></span>
+                            </div>
+                            <input type="tel" class="form-control" name="num_tel" placeholder="Tel Ici" value="{{ $num_tel}}" pattern="[0-9]{8}" required>
+                        </div>
+                        <div>
+                            @if($errors->has('num_tel'))
+                            <p class="alert-danger">
+                                <font color="black">{{ $errors->first('num_tel') }}</font>
+                            </p>
+                            @endif
+                        </div>
+                    </div>
+
+                </div>
+
                 <div class="form-group row">
                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Nom</label>
                     <div class="col-sm-9">

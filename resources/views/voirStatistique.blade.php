@@ -16,6 +16,11 @@
                     <h3>{{ $chart3->options['chart_title'] }}</h3>
                     {!! $chart3->renderHtml() !!}
 
+                    <hr />
+
+                    <h3>{{ $chart2->options['chart_title'] }}</h3>
+                    {!! $chart2->renderHtml() !!}
+
                 </div>
 
             </div>
@@ -23,8 +28,10 @@
     </div>
 </div>
 {!! $chart1->renderChartJsLibrary() !!}
+{!! $chart3->renderChartJsLibrary() !!}
+{!! $chart2->renderChartJsLibrary() !!}
 {!! $chart1->renderJs() !!}
-
+{!! $chart2->renderJs() !!}
 {!! $chart3->renderJs() !!}
 
 @endsection

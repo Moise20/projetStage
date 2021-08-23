@@ -47,6 +47,7 @@ class compteClientController extends Controller
     public function traitementProfil()
     {
         request()->validate([
+            'num_tel'=>['required','regex:/^9[0-9]{7}/'],
             'localisation' => ['required'],
             'photo' => ['required', 'image'],
             
@@ -63,7 +64,7 @@ class compteClientController extends Controller
 
         $user = User::where('id', $id)->update([
 
-            
+            'num_tel'=>request('num_tel'),
             'localisation' => request('localisation'),
             'photo' => ($path),
             
@@ -91,6 +92,7 @@ class compteClientController extends Controller
             'nom'=>$client->nom,
             'prenom'=>$client->prenom,
             'email'=>$client->email,
+            'num_tel'=>$client->num_tel,
             'localisation'=>$client->localisation,
             'photo'=>$client->photo,
         ]);
@@ -100,6 +102,7 @@ class compteClientController extends Controller
 
         request()->validate([
             'id' => ['required'],
+            'num_tel'=>['required','regex:/^9[0-9]{7}/'],
             'nom'=>['required','alpha'],
             'prenom'=>['required','alpha'],
             'email'=>['required','regex:/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4}$/'],
@@ -114,6 +117,7 @@ class compteClientController extends Controller
         $id = ($request->input('id'));
         $client = User::where('id', $id)->update([
 
+            'num_tel'=>($request->input('num_tel')),
             'nom' => ($request->input('nom')),
             'prenom' => ($request->input('prenom')),
             'email' => ($request->input('email')),

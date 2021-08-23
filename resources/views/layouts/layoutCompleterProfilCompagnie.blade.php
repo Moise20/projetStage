@@ -162,8 +162,7 @@
                     <li class="sidebar-item"><a href="/completerProfilCompagnie" class="sidebar-link"><i class="mdi mdi-account-circle"></i><span class="hide-menu"> Completer Profil </span></a></li>
                         <li class="sidebar-item"><a href="/ajouterAgence" class="sidebar-link"><i class="mdi mdi-border-outside"></i><span class="hide-menu"> Agences </span></a></li>
                         <li class="sidebar-item"><a href="/ajouterTrajet" class="sidebar-link"><i class="mdi mdi-table-large"></i><span class="hide-menu"> Trajet </span></a></li>
-                        <li class="sidebar-item"><a href="/ajouterBus" class="sidebar-link"><i class="mdi mdi-car"></i><span class="hide-menu"> Bus </span></a></li>
-                        
+                       
                     </ul>
                 </nav>
 

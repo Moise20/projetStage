@@ -188,7 +188,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Page de Bord {{auth()->user()->nom}}</h4>
+                        <h4 class="page-title">Page de Bord </h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
 
@@ -223,7 +223,7 @@
                                     <div class="card-body">
                                         <div class="d-md-flex align-items-center">
                                             <div>
-                                                <h4 class="card-title">Analyse De L'Application</h4>
+                                                <h4 class="card-title">Analyse </h4>
                                                 <h5 class="card-subtitle"></h5>
                                             </div>
                                         </div>

@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title m-b-0">Informations De l'Administrateur</h5>
+        <h5 class="card-title m-b-0" align = "center">Informations De l'Administrateur</h5>
     </div>
     <div class="table-responsive">
         <table class="table">

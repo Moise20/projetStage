@@ -16,7 +16,7 @@
                         </label>
                     </th>
                     
-                    <th scope="col"><strong>Nom</strong></th>
+                    
                     <th scope="col"><strong>VilleDepart</strong></th>
                     <th scope="col"><strong>VilleArrivee</strong></th>
                     <th scope="col"><strong>HeureDepart</strong></th>
@@ -25,7 +25,9 @@
                     <th scope="col"><strong>tarif</strong></th>
                     <th scope="col"><strong>Nombre de Place</strong></th>
                     <th scope="col"><strong>Agence</strong></th>
-                    <th scope="col"><strong>Action</strong></th>
+                    <th scope="col"><strong></strong></th>
+                    <th scope="col"><strong></strong></th>
+                    <th scope="col"><strong></strong></th>
                 </tr>
             </thead>
             <tbody class="customtable">
@@ -38,7 +40,7 @@
                         </label>
                     </th>
                    
-                    <td>{{$trajet->nom}}</td>
+                   
                     <td>{{$trajet->villeDepart}}</td>
                     <td>{{$trajet->villeArrivee}}</td>
                     <td>{{$trajet->heureDepart}}</td>
@@ -52,11 +54,30 @@
                         <a href="{{route('modifierTrajet.show', [$trajet->id]) }}">
                             <div class="field">
                                 <div class="control">
-                                    <button class="button is-link" type="submit">Modifier</button>
+                                    <button class="far fa-edit" type="submit"></button>
                                 </div>
                             </div>
                         </a>
                     </td>
+                    <td>
+                        <a href="{{route('supprimerTrajet.show', [$trajet->id]) }}">
+                            <div class="field">
+                                <div class="control">
+                                    <button class='far fa-trash-alt' type="submit"></button>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{route('clientDesTrajets.show', [$trajet->id]) }}">
+                            <div class="field">
+                                <div class="control">
+                                    <button class='fas fa-arrow-circle-right' type="submit"></button>
+                                </div>
+                            </div>
+                        </a>
+                    </td>
+
                 </tr>
                @endforeach
             </tbody>

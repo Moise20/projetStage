@@ -127,4 +127,46 @@ class trajetController extends Controller
         flash("Les informations ont bien été mise à jour.")->success();
         return redirect('/listeTrajet');
     }
+
+    public function traitementClientDesTrajets($id)
+    {
+       
+        $id = request('id');
+        $infosClients = DB::table('trajets')
+        ->join('reservations','trajets.id','=','reservations.trajet_id')
+        ->join('agences','trajets.agence_id','=','agences.id')
+        ->join('users','agences.user_id','=','users.id')
+        ->select('trajets.villeDepart','trajets.villeArrivee','trajets.heureDepart','trajets.dateDepart'
+        ,'reservations.nbrPassager','reservations.infoPassPrincip','reservations.tel','users.nom')
+        ->where('reservations.id',$id)
+        ->get();
+        return view('clientsDesTrajets',[
+            'infosClients'=>$infosClients,
+        ]);
+        //dd($infosClients);
+    }
+
+    public function retourVersListeTrajets()
+    {
+        $compagnie = auth()->user();
+        $idC = $compagnie->id;
+    
+        $trajet = DB::table('trajets')
+            ->join('agences', 'trajets.agence_id', '=', 'agences.id')
+            ->join('users','agences.user_id','=','users.id')
+            ->select('trajets.id', 'trajets.nom', 'trajets.villeDepart', 'trajets.villeArrivee', 'trajets.heureDepart', 'trajets.heureArrivee', 'trajets.dateDepart', 'trajets.tarif', 'trajets.nbrPlace', 'agences.nom as agenceNom')
+            ->where('users.id',$idC)
+            ->get();
+
+            return view('listeTrajet',[
+                'trajets'=>$trajet,
+            ]);
+    }
+
+    public function supprimerTrajet($id)
+    {
+        $id  = request('id');
+        $trajet=Trajet::where('id', $id)->delete();
+        
+    }
 }

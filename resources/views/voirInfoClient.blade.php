@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title m-b-0">Informations Du Client</h5>
+        <h5 class="card-title m-b-0"align = "center">Informations Du Client</h5>
     </div>
     <div class="table-responsive">
         <table class="table">
@@ -19,6 +19,7 @@
                     <th scope="col"><strong>Nom</strong></th>
                     <th scope="col"><strong>Prenom</strong></th>
                     <th scope="col"><strong>Email</strong></th>
+                    <th scope="col"><strong>Tel</strong></th> 
                     <th scope="col"><strong>Adresse</strong></th>
                     <th scope="col"><strong>Photo</strong></th>
                     <th scope="col"><strong>Action</strong></th>
@@ -37,6 +38,7 @@
                     <td>{{$client->nom}}</td>
                     <td>{{$client->prenom}}</td>
                     <td>{{$client->email}}</td>
+                    <td>{{$client->num_tel}}</td>
                     <td>{{$client->localisation}}</td>
                   
                     <td>

@@ -17,7 +17,7 @@ class statistiqueController extends Controller
     {
 
         $chart_options = [
-            'chart_title' => 'Utilisateurs par jour',
+            'chart_title' => 'Nombre d\'utilisateurs par jour',
             'report_type' => 'group_by_date',
             'model' => 'App\Models\User',
             'group_by_field' => 'created_at',
@@ -86,7 +86,26 @@ class statistiqueController extends Controller
         $chart3 = new LaravelChart($chart_options);*/
 
         $chart_options = [
-            'chart_title' => 'Montant des Reservations par dates',
+            'chart_title' => 'Users by names',
+            'report_type' => 'group_by_string',
+            //'model' => 'App\Models\User',
+           'model' => 'App\Models\Reservation',
+        
+            //'relationship_name' => 'user', // represents function user() on Transaction model
+            //'group_by_field' => 'users.nom', // users.name
+            'group_by_field' => 'infoPassPrincip',
+            //'aggregate_function' => 'count',
+            //'aggregate_field' => 'reservations.client_id',
+            'chart_type' => 'pie',
+            'filter_field' => 'reservations.created_at',
+            'filter_days' => 30,
+            'filter_period' => 'month', // show users only registered this month
+        ];
+    
+        $chart2 = new LaravelChart($chart_options);
+
+        $chart_options = [
+            'chart_title' => 'Montant des Reservations par jour(en FCFA)',
             'report_type' => 'group_by_date',
             'model' => 'App\Models\Reservation',
             'group_by_field' => 'created_at',
@@ -98,6 +117,6 @@ class statistiqueController extends Controller
     
         $chart3 = new LaravelChart($chart_options);
 
-        return view('voirStatistique', compact('chart1','chart3'));
+        return view('voirStatistique', compact('chart1','chart3','chart2'));
     }
 }

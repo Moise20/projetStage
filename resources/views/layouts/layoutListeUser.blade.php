@@ -163,9 +163,9 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
 
-                        <li class="sidebar-item"><a href="/listeUser" class="sidebar-link"><i class="mdi mdi-receipt"></i><span class="hide-menu"> Utilisateurs </span></a></li>
-                        <li class="sidebar-item"><a href="/page-gallerie" class="sidebar-link"><i class="mdi mdi-receipt"></i><span class="hide-menu"> Colis </span></a></li>
-                        <li class="sidebar-item"><a href="/statistiques" class="sidebar-link"><i class="mdi mdi-receipt"></i><span class="hide-menu"> Statistiques </span></a></li>
+                        <li class="sidebar-item"><a href="/listeUser" class="sidebar-link"><i class="mdi mdi-account-circle"></i><span class="hide-menu"> Utilisateurs </span></a></li>
+                        <li class="sidebar-item"><a href="/page-gallerie" class="sidebar-link"><i class="mdi mdi-package-variant"></i><span class="hide-menu"> Colis </span></a></li>
+                        <li class="sidebar-item"><a href="/statistiques" class="sidebar-link"><i class="mdi far fa-chart-bar"></i><span class="hide-menu"> Statistiques </span></a></li>
 
 
                     </ul>

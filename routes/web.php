@@ -27,6 +27,7 @@ use App\Http\Controllers\SimpleQRcodeController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\statistiqueController;
 use App\Http\Controllers\traitementPaiementFinalController;
+use App\Http\Controllers\annulerBilletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -162,6 +163,22 @@ Route::group([
         'uses' => 'App\Http\Controllers\trajetController@formulaireModif'
     ]);
     Route::post('/modifierTrajet', [trajetController::class, 'traitementModif']);
+
+    
+
+    Route::get('/supprimerTrajet{id}', [
+        'as' => 'supprimerTrajet.show',
+        'uses' => 'App\Http\Controllers\trajetController@supprimerTrajet'
+    ]);
+    //Route pour voir les informations des clients qui ont reserves pour un trajet
+    Route::get('/clientDesTrajets{id}',[
+        'as'=>'clientDesTrajets.show',
+        'uses'=>'App\Http\Controllers\trajetController@traitementClientDesTrajets']);
+    //Route pour retourner vers la liste des trajets en etant sur la page des clients ayant reserves un trajet
+    Route::get('/retourVersListeTrajet',[trajetController::class,'retourVersListeTrajets']);
+
+    //Route pour annuler une reservation
+    Route::get('/annulerBillet',[annulerBilletController::class,'voirInfoReservation']);
     //route pour ajouter un bus
     Route::get('/ajouterBus', [busController::class, 'formulaire']);
     Route::post('/ajouterBus', [busController::class, 'traitement']);
@@ -263,6 +280,7 @@ Route::group([
 //Route::get('/finaliserPaiementTrajet',[reserverBilletController::class,'afficher']);
 //Route::get('/finaliserPaiementTrajet', [reserverBilletController::class, 'confirmerPaiement']);
 //Route::post('/traitementFinal', [reserverBilletController::class, 'TraitementFinaliserPaiement']);
+Route::get('/finaliserPaiementTrajet', [reserverBilletController::class, 'confirmerPaiement']);
 Route::post('/traitementFinal',[traitementPaiementFinalController::class,'TraitementFinaliserPaiement']);
 
 
@@ -314,4 +332,3 @@ Route::get('simple-qrcode',[SimpleQRcodeController::class,'generate']);
     echo "<html><head><script>var centreGot = false;</script>".$map['js']."</head><body>".$map['html']."</body></html>";
 });
 */
-Route::get('/finaliserPaiementTrajet', [reserverBilletController::class, 'confirmerPaiement']);

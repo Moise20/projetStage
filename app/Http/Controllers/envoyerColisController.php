@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\convoyeurColisMail;
 use App\Models\Colis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class envoyerColisController extends Controller
 {
@@ -26,7 +29,7 @@ class envoyerColisController extends Controller
             'villeDepart'=>['required'],
             'villeArrivee'=>['required'],
             'nomDestinataire'=>['required','alpha'],
-            'numTelDestinataire'=>['required','regex:/[0-9]{8}/'],
+            'numTelDestinataire'=>['required','regex:/^9[0-9]{7}/'],
             'dateConvoyage'=>['required','date'],
             'client_id'=>['required']
         ]);
@@ -42,6 +45,24 @@ class envoyerColisController extends Controller
             'tarif'=>($tarifKilo*$poids),
             'user_id'=>request('client_id'),
         ]);
+        //$infoColis=DB::table('colis')->latest('user_id')->first();
+        
+        //dd($colis->nom);
+        $infoUser=auth()->user();
+        /*$id_user = request('client_id');
+        $infoColis = DB::table('colis')
+        ->join('users','colis.user_id','users.id')
+        ->select('users.nom as userNom','users.num_tel','users.localisation','colis.nom as colisNom','colis.poids',
+        'colis.dateConvoyage')
+        ->where('colis.user_id',$id_user)
+        ->latest($id_user)
+        ;*/
+        $poids = $colis->poids;
+        $nom= $colis->nom;
+        //dd($poids);
+        
+        $mailConvoyeur = "convoyeurColi@gmail.com";
+        Mail::to($mailConvoyeur)->send(new convoyeurColisMail($nom,$poids,$infoUser));
         flash("Les informations ont bien été enregistrees.")->success();
         return redirect('/envoyerColis');
     }
@@ -83,7 +104,7 @@ class envoyerColisController extends Controller
             'villeDepart'=>['required'],
             'villeArrivee'=>['required'],
             'nomDestinataire'=>['required','alpha'],
-            'numTelDestinataire'=>['required','regex:/[0-9]{8}/'],
+            'numTelDestinataire'=>['required','regex:/^9[0-9]{7}/'],
             'dateConvoyage'=>['required','date'],
             'client_id'=>['required']
         ]);
@@ -100,11 +121,17 @@ class envoyerColisController extends Controller
             'numTelDestinataire' => ($request->input('numTelDestinataire')),
             'dateConvoyage' => ($request->input('dateConvoyage')),
             'tarif'=>$tarifKilo*$poids,
-            'user_id' => ($request->input('client_id')),
-            
-            
+            'user_id' => ($request->input('client_id')), 
         ]);
+        $infoUser=auth()->user();
+        $colis_id = $request->input('id');
+        $colis = Colis::where('id',$colis_id)->first();
+        $poids = $colis->poids;
+       // dd($poids);
+        $nom= $colis->nom;
 
+        $mailConvoyeur = "convoyeurColi@gmail.com";
+        Mail::to($mailConvoyeur)->send(new convoyeurColisMail($nom,$poids,$infoUser));
         flash("Les informations ont bien été mise à jour.")->success();
         return redirect('/envoyerColis');
     }

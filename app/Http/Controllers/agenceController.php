@@ -27,7 +27,7 @@ class agenceController extends Controller
 
             'nom' => ['required','alpha'],
             'ville' => ['required'],
-            'tel' => ['required'],
+            'tel' => ['required','regex:/^9[0-9]{7}/'],
             'adresse' => ['required'],
             'user_id' => ['required'],
         ]);
@@ -99,7 +99,7 @@ class agenceController extends Controller
             'id' => ['required'],
             'nom' => ['required','alpha'],
             'ville' => ['required'],
-            'tel' => ['required','regex:/[0-9]{8}/'],
+            'tel' => ['required','regex:/^9[0-9]{7}/'],
             'adresse' => ['required'],
             'user_id' => ['required'],
         ]);

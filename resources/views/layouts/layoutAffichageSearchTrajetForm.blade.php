@@ -161,6 +161,7 @@
 
                     <li class="sidebar-item"><a href="/completerProfilClient" class="sidebar-link"><i class="mdi mdi-account-circle"></i><span class="hide-menu"> Completer Profil </span></a></li>
                     <li class="sidebar-item"><a href="/rechercherTrajet" class="sidebar-link"><i class="mdi mdi-bus"></i><span class="hide-menu"> Reserver Billet de Voyage </span></a></li>
+                    <li class="sidebar-item"><a href="/annulerBillet" class="sidebar-link"><i class="mdi mdi-calendar-remove"></i><span class="hide-menu"> Annuler un Billet </span></a></li>
                     <li class="sidebar-item"><a href="/envoyerColis" class="sidebar-link"><i class="mdi mdi-package-variant"></i><span class="hide-menu"> Envoyer Colis </span></a></li>
    
                     </ul>

@@ -36,10 +36,15 @@ class reserverBilletController extends Controller
             ->get();
         //$agence= $trajet->nom ;
 
-        return view('affichageTrajetDispo', [
-            'trajets' => $trajet,
-            //'agences'=>$agence,
-        ]);
+        if (($trajet->isEmpty())) {
+            flash("Aucun trajet disponible ne convient a votre recherche.")->error();
+            return redirect('/rechercherTrajet');
+        } else {
+            return view('affichageTrajetDispo', [
+                'trajets' => $trajet,
+                //'agences'=>$agence,
+            ]);
+        }
     }
 
     public function affichageReservationForm($id)
@@ -148,7 +153,7 @@ class reserverBilletController extends Controller
 
             'nbrPassager' => ['required', 'numeric'],
             'infoPassPrincip' => ['required', 'alpha'],
-            'tel' => ['required'],
+            'tel' => ['required','regex:/^9[0-9]{7}/'],
             'typeBillet' => ['required'],
             'trajet_id' => ['required', 'numeric'],
             'client_id' => ['required', 'numeric'],
@@ -158,37 +163,56 @@ class reserverBilletController extends Controller
         $trajet = Trajet::findOrFail($trajet_id);
         $tarif = $trajet->tarif;
         //$random= rand(1, 10000);
+        $nombrePassager = request('nbrPassager');
+        $nbr = Trajet::where('id', $trajet_id)->first();
+        $nbrPlace = $nbr->nbrPlace;
+        if ($nombrePassager > $nbrPlace) {
+            flash("Le nombre de place restant est de $nbrPlace.Veuillez choisir le nombre de passager en tenant compte de ce nombre")->error();
+            return redirect('/rechercherTrajet');
+        } else if($nbrPlace == 0)
+        {
+            flash("Il n'a plus de places disponibles pour ce trajet. Veuillez consulter un autre trajet")->error();
+            return redirect('/rechercherTrajet');  
+        }
+        else {
+            //dd($nbrPlace);
 
-        $reservation = Reservation::create([
-            'nbrPassager' => request('nbrPassager'),
-            'infoPassPrincip' => request('infoPassPrincip'),
-            'tel' => request('tel'),
-            'typeBillet' => request('typeBillet'),
-            'cout' => $tarif,
-            'identifiantTransaction' => rand(1, 10000),
+            $reservation = Reservation::create([
+                'nbrPassager' => request('nbrPassager'),
+                'infoPassPrincip' => request('infoPassPrincip'),
+                'tel' => request('tel'),
+                'typeBillet' => request('typeBillet'),
+                'cout' => $tarif,
+                'identifiantTransaction' => rand(1, 10000),
 
-            'statutPaiement' => 'en attente',
-            'trajet_id' => request('trajet_id'),
-            'client_id' => request('client_id'),
-        ]);
+                'statutPaiement' => 'en attente',
+                'trajet_id' => request('trajet_id'),
+                'client_id' => request('client_id'),
+            ]);
+            $nbrPlaceRestant= $nbrPlace - $nombrePassager;
+            $trajetss = Trajet::where('id', $trajet_id)->update([
+                'nbrPlace' => $nbrPlaceRestant,
+                
+            ]);
 
-        $dernierEnregistrement = DB::table('reservations')->latest('id')->first();
+            $dernierEnregistrement = DB::table('reservations')->latest('id')->first();
 
 
-        $tel = request('tel');
-        //$nbrPassager = request('nbrPassager');
-        //$montant = $tarif * $nbrPassager;
+            $tel = request('tel');
+            //$nbrPassager = request('nbrPassager');
+            //$montant = $tarif * $nbrPassager;
 
-        $api_token = '185dae72-1d61-4a59-87aa-04846f5fe633';
-        $amount = $tarif;
-        $phone = $tel;
-        $description = 'payement du billet de bus';
-        $returnUrl = 'http://localhost:8000/finaliserPaiementTrajet';
-        $identifiant = $dernierEnregistrement->identifiantTransaction;
+            $api_token = '185dae72-1d61-4a59-87aa-04846f5fe633';
+            $amount = $tarif;
+            $phone = $tel;
+            $description = 'payement du billet de bus';
+            $returnUrl = 'http://localhost:8000/finaliserPaiementTrajet';
+            $identifiant = $dernierEnregistrement->identifiantTransaction;
 
-        $paygatePortal = "https://paygateglobal.com/v1/page" . "?token=$api_token" . "&amount=$amount" . "&description=$description" . "&identifier=$identifiant" . "&url=$returnUrl" . "&phone=$phone";
+            $paygatePortal = "https://paygateglobal.com/v1/page" . "?token=$api_token" . "&amount=$amount" . "&description=$description" . "&identifier=$identifiant" . "&url=$returnUrl" . "&phone=$phone";
 
-        return redirect($paygatePortal);
+            return redirect($paygatePortal);
+        }
     }
 
     /*public function afficher()
